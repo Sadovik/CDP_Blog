@@ -1,0 +1,320 @@
+@import "bourbon/bourbon";
+
+@import '../partials/variables'; // colors, fonts etc...
+
+@import '../partials/mixins'; // custom mixins
+
+@import '../partials/layout'; // responsive grid and media queries
+
+@import '../partials/area'; // custom mixins
+
+/************************ Primary style ************************/
+
+*, *::after, *::before {
+  @include box-sizing(border-box);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font: {
+	size: 1.6rem;
+	family: $primary-font; // variables inside partials > _variables.scss
+  }
+  color: $color-1;
+  background-color: lighten($color-4, 30%);
+}
+
+a {
+  color: $color-2;
+  text-decoration: none;
+}
+
+/************************ Main Components ************************/
+
+.cd-header {
+  position: relative;
+  height: 150px;
+  background-color: $color-1;
+
+  h1 {
+	color: $color-3;
+	line-height: 150px;
+	text-align: center;
+	font-size: 2.4rem;
+	font-weight: 300;
+  }
+
+  @include MQ(L) {
+	height: 180px;
+
+	h1 {
+	  line-height: 180px;
+	}
+  }
+}
+
+.cd-main-content {
+  position: relative;
+  min-height: 100vh;
+  @include clearfix;
+
+  &.is-fixed {
+
+	.cd-gallery {
+	  padding-top: 26px+$tab-filter-height;
+	}
+
+	.cd-filter {
+	  position: fixed;
+	  height: 100vh;
+	  overflow: hidden;
+
+	  form {
+		height: 100vh;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+	  }
+	}
+
+	.cd-filter-trigger {
+	  position: fixed;
+	}
+
+	@include MQ(M) {
+	  .cd-gallery {
+		padding-top: 40px+$tab-filter-height;
+	  }
+	}
+
+	@include MQ(L) {
+	  .cd-gallery {
+		padding-top: 50px+$tab-filter-height;
+	  }
+	}
+  }
+}
+
+/************************ Filter ************************/
+
+.cd-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100%;
+  background: $color-3;
+  box-shadow: 4px 4px 20px rgba(#000, 0);
+  z-index: 2;
+
+  /* Force Hardware Acceleration in WebKit */
+  @include transform(translateZ(0));
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  @include transform(translateX(-100%));
+  @include transition(transform .3s, box-shadow .3s);
+
+  &::before {
+	/* top colored bar */
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: $tab-filter-height;
+	width: 100%;
+	background-color: $color-2;
+	z-index: 2;
+  }
+
+  .cd-filter-wrap {
+	padding: $tab-filter-height+20px 20px;
+  }
+
+  .cd-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: $tab-filter-height;
+	line-height: $tab-filter-height;
+	width: 60px;
+
+	color: $color-3;
+	font-size: 1.3rem;
+	text-align: center;
+
+	background: darken($color-2, 5%);
+	opacity: 0;
+
+	@include transition(opacity .3s);
+	z-index: 3;
+
+	.no-touch &:hover {
+	  background: darken($color-2, 8%);
+	}
+  }
+
+  &.filter-is-visible {
+	@include transform(translateX(0));
+	box-shadow: 4px 4px 20px rgba(#000, .2);
+
+	.cd-close {
+	  opacity: 1;
+	}
+  }
+
+  @include MQ(L) {
+	width: 20%;
+
+	form {
+	  padding: $tab-filter-height+20px 10%;
+	}
+  }
+}
+
+.cd-filter-trigger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: $tab-filter-height;
+  line-height: $tab-filter-height;
+  width: 60px;
+
+  /* image replacement */
+  overflow: hidden;
+  text-indent: 100%;
+  color: transparent;
+  white-space: nowrap;
+  background: transparent url('../img/cd-icon-filter.svg') no-repeat center center;
+
+  z-index: 3;
+
+  &.filter-is-visible {
+	pointer-events: none;
+  }
+
+  @include MQ(L) {
+	width: auto;
+	left: 2%;
+
+	text-indent: 0;
+	color: $color-4;
+	text-transform: uppercase;
+	font-size: 1.3rem;
+	font-weight: 700;
+
+	padding-left: 24px;
+	background-position: left center;
+
+	@include transition(color .3s);
+
+	.no-touch &:hover {
+	  color: $color-2;
+	}
+
+	&.filter-is-visible,
+	&.filter-is-visible:hover {
+	  color: $color-3;
+	}
+  }
+}
+
+/************************ Custom form elements ************************/
+
+.cd-filter-block {
+  margin-bottom: 1.6em;
+
+  h4 {
+	/* filter block title */
+	position: relative;
+	margin-bottom: .2em;
+	padding: 10px 0 10px 20px;
+
+	color: $color-4;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 1.3rem;
+
+	@include user-select(none);
+	cursor: pointer;
+
+	.no-touch &:hover {
+	  color: $color-2;
+	}
+
+	&::before {
+	  /* arrow */
+	  content: '';
+	  position: absolute;
+	  left: 0;
+	  top: 50%;
+	  width: 16px;
+	  height: 16px;
+	  background: url('../img/cd-icon-arrow.svg') no-repeat center center;
+
+	  @include transform(translateY(-50%));
+	  @include transition(transform .3s);
+	}
+
+	&.closed::before {
+	  @include transform(translateY(-50%) rotate(-90deg));
+	}
+  }
+
+  input, select {
+	/* shared style for input elements */
+	font-family: $primary-font;
+	border-radius: 0;
+	background-color: $color-3;
+	border: 2px solid darken($color-3, 10%);
+  }
+
+  input[type='search'],
+  input[type='text'] {
+	width: 100%;
+	padding: .8em;
+	@include appearance(none);
+	box-shadow: none;
+
+	&:focus {
+	  outline: none;
+	  background-color: $color-3;
+	  border-color: $color-2;
+	}
+  }
+
+  input[type='search'] {
+	/* custom style for the search element */
+	border-color: transparent;
+	background-color: darken($color-3, 10%);
+	/* prevent jump - ios devices */
+	font-size: 1.6rem !important;
+  }
+
+  input[type='search']::-webkit-search-cancel-button {
+	display: none;
+  }
+
+  .list li {
+	position: relative;
+	margin-bottom: .8em;
+
+	&:last-of-type {
+	  margin-bottom: 0;
+	}
+  }
+}
+
+@-moz-document url-prefix(){
+  /* hide custom arrow on Firefox - select element */
+  .cd-filter-block .cd-select::after {
+	display: none;
+  }
+}
