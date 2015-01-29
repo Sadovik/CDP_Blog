@@ -3,7 +3,7 @@
   width: 100%; }
 
 .cd-article {
-  padding: 1%; }
+  padding: 2%; }
 
 /************************ Primary style ************************/
 *, *::after, *::before {
@@ -39,11 +39,6 @@ a {
     text-align: center;
     font-size: 2.4rem;
     font-weight: 300; }
-  @media only screen and (min-width: 1170px) {
-    .cd-header {
-      height: 180px; }
-      .cd-header h1 {
-        line-height: 180px; } }
 
 .cd-main-content {
   position: relative;
@@ -64,12 +59,6 @@ a {
       -webkit-overflow-scrolling: touch; }
   .cd-main-content.is-fixed .cd-filter-trigger {
     position: fixed; }
-  @media only screen and (min-width: 768px) {
-    .cd-main-content.is-fixed .cd-gallery {
-      padding-top: 90px; } }
-  @media only screen and (min-width: 1170px) {
-    .cd-main-content.is-fixed .cd-gallery {
-      padding-top: 100px; } }
 
 /************************ Filter ************************/
 .cd-filter {
@@ -136,11 +125,6 @@ a {
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2); }
     .cd-filter.filter-is-visible .cd-close {
       opacity: 1; }
-  @media only screen and (min-width: 1170px) {
-    .cd-filter {
-      width: 20%; }
-      .cd-filter form {
-        padding: 70px 10%; } }
 
 .cd-filter-trigger {
   position: absolute;
@@ -158,24 +142,6 @@ a {
   z-index: 3; }
   .cd-filter-trigger.filter-is-visible {
     pointer-events: none; }
-  @media only screen and (min-width: 1170px) {
-    .cd-filter-trigger {
-      width: auto;
-      left: 2%;
-      text-indent: 0;
-      color: #9a9a9a;
-      text-transform: uppercase;
-      font-size: 1.3rem;
-      font-weight: 700;
-      padding-left: 24px;
-      background-position: left center;
-      -webkit-transition: color 0.3s;
-      -moz-transition: color 0.3s;
-      transition: color 0.3s; }
-      .no-touch .cd-filter-trigger:hover {
-        color: #41307c; }
-      .cd-filter-trigger.filter-is-visible, .cd-filter-trigger.filter-is-visible:hover {
-        color: #ffffff; } }
 
 /************************ Custom form elements ************************/
 .cd-filter-block {

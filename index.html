@@ -22,7 +22,7 @@
 	<main class="cd-main-content">
 
 		<section class="cd-area">
-			<article ng-repeat="articleInBlog in posts" class="cd-article"  ng-show="{{ articleInBlog.image }}">
+			<article ng-repeat="articleInBlog in articles" class="cd-article"  ng-show="{{ articleInBlog.image }}">
 				<h1>{{ articleInBlog.title }}</h1>
 				<p>{{ articleInBlog.text }}</p>
 				<figure>
@@ -71,6 +71,8 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+	<script src="js/factoriesBlog.js"></script>
+	<script src="js/controllersBlog.js"></script>
 	<script src="js/appBlog.js"></script>
 
 </body>

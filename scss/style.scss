@@ -1,11 +1,8 @@
 @import "bourbon/bourbon";
 
 @import '../partials/variables'; // colors, fonts etc...
-
 @import '../partials/mixins'; // custom mixins
-
 @import '../partials/layout'; // responsive grid and media queries
-
 @import '../partials/area'; // custom mixins
 
 /************************ Primary style ************************/
@@ -51,14 +48,6 @@ a {
 	font-size: 2.4rem;
 	font-weight: 300;
   }
-
-  @include MQ(L) {
-	height: 180px;
-
-	h1 {
-	  line-height: 180px;
-	}
-  }
 }
 
 .cd-main-content {
@@ -86,18 +75,6 @@ a {
 
 	.cd-filter-trigger {
 	  position: fixed;
-	}
-
-	@include MQ(M) {
-	  .cd-gallery {
-		padding-top: 40px+$tab-filter-height;
-	  }
-	}
-
-	@include MQ(L) {
-	  .cd-gallery {
-		padding-top: 50px+$tab-filter-height;
-	  }
 	}
   }
 }
@@ -169,14 +146,6 @@ a {
 	  opacity: 1;
 	}
   }
-
-  @include MQ(L) {
-	width: 20%;
-
-	form {
-	  padding: $tab-filter-height+20px 10%;
-	}
-  }
 }
 
 .cd-filter-trigger {
@@ -198,31 +167,6 @@ a {
 
   &.filter-is-visible {
 	pointer-events: none;
-  }
-
-  @include MQ(L) {
-	width: auto;
-	left: 2%;
-
-	text-indent: 0;
-	color: $color-4;
-	text-transform: uppercase;
-	font-size: 1.3rem;
-	font-weight: 700;
-
-	padding-left: 24px;
-	background-position: left center;
-
-	@include transition(color .3s);
-
-	.no-touch &:hover {
-	  color: $color-2;
-	}
-
-	&.filter-is-visible,
-	&.filter-is-visible:hover {
-	  color: $color-3;
-	}
   }
 }
 
