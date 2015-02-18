@@ -1,0 +1,91 @@
+/*** Header ***/
+.page-header { background: #ffffff; position: relative; z-index: 90; padding: 15px 0 0; text-align: center;
+  @include box-shadow(0 5px 16px rgba(0,35,75,.35));  border-bottom: 4px solid #c6defa;
+
+  & > a { display: inline-block; margin-bottom: 15px;
+    img { display: block; margin: 0 auto; }
+    @media #{$information-phone} { margin-left: 42px; margin-right: 42px;
+      img { max-width: 100%; }
+    }
+  }
+
+  a.current {
+    &:before, &:after {
+      content: ""; border-left: 8px transparent solid; border-right:  8px transparent solid; position: absolute; left: 50%; margin-left: -8px; width: 0; height: 0;
+    }
+    &:before { border-top: 8px #6b9ad0 solid; bottom: -9px; z-index: 40; }
+    &:after { border-top: 8px #c6defa solid; bottom: -14px; z-index: 30; }
+    @media #{$information-phone} {
+      &:before { border-top: 8px #7ca7d9 solid; bottom: -6px; }
+      &:after { border-top: 8px #6b9ad0 solid; bottom: -8px; }
+    }
+  }
+
+  @media #{$information-pc} { margin-bottom: 46px; }
+  @media #{$information-phone} {  border-bottom: none; }
+}
+
+.page-nav { background-color: #6b9ad0;
+  ul { max-width: 924px; margin: 0 auto;
+    li { display: inline-block;
+      a { display: block; z-index: 20; padding: 0 30px; position: relative; text-shadow: 0 1px 1px rgba(193, 219, 255, 0.67); color: #fefefe; font-size: 18px; line-height: 48px; font-weight: 400; text-transform: uppercase; text-decoration: none; margin: 3px 0;
+        &:hover { background: #7ca7d9; }
+        @media #{$information-tablet} { padding: 0 16px; }
+      }
+    }
+    @media #{$information-phone} {
+      display: none; clear: both; background: #e1eefc; padding: 0 15px;
+        li { display: block; border-top: 1px #ffffff solid;
+          &:first-child { border-top: none; }
+          a { color: #6b9ad0; line-height: 38px;
+            &:hover { color: #ffffff; }
+            &.current {
+              &:before, &:after { display: none; }
+            }
+          }
+        }
+      &.expand { display: block; }
+    }
+  }
+}
+
+.scrolling-logo {
+  position: fixed; margin-left: -462px; top: 6px; left: 50%; opacity: 0; z-index: 120;
+  @include transition(opacity 0.01s ease-in-out);
+}
+
+.scrolling {
+  .scrolling-logo {
+    @media #{$information-pc} { opacity: 1; }
+  }
+  .page-nav {
+    position: fixed; width: 100%; top: 0; left: 0; border-bottom: 4px solid #c6defa; z-index: 100;
+    @include box-shadow(0 5px 16px rgba(0,35,75,.35));
+
+    @media #{$information-phone} { border-bottom: none; background: url(../images/mobile-logo.png) no-repeat 124px 50% #6b9ad0; }
+  }
+}
+
+
+/*** Tablets and Phones header links ***/
+.link-aside { position: relative; width: 44px; height: 50px; margin: 2px; background: #7ca7d9; font-size: 26px; line-height: 54px; text-align: center; color: #608dc1; text-decoration: none;
+  @media #{$information-phone} { width: 30px; height: 30px; line-height: 30px; font-size: 20px; }
+}
+.link-about { float: left; }
+.link-some { float: right; }
+.link-about, .link-some, .link-tags {
+  @media #{$information-pc} { display: none; }
+  @media #{$information-phone} { float: left; }
+}
+.link-tags { @media #{$information-tablet} { display: none; } }
+
+.link-tags { @include sprite($icon_tag); }
+
+
+.link-m-nav { padding: 10px 6px 0; height: 20px; width: 18px; float: right; margin: 2px 8px 2px 0; display: none; position: relative;
+  span { display: block; margin-bottom: 2px; width: 18px; height: 2px; background: #9cbce1; }
+  @media #{$information-phone} { display: block; }
+  &.current:before { display: none; }
+}
+
+/*** End Header CSS ***/

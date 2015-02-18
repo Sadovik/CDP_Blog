@@ -1,2 +1,25 @@
-.sass-cache/
-.idea/
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
+
+# OS or Editor folders
+.DS_Store
+.cache
+.project
+.settings
+Thumbs.db
+
+# Folders to ignore
+.hg
+.svn
+.idea
+/node_modules/
+/path/

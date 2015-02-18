@@ -1,0 +1,24 @@
+{
+  "name": "CDP_Blog",
+  "version": "0.4.0",
+  "description": "Task from CDP Portal",
+  "author": "VH",
+  "homepage": "https://github.com/Sadovik/CDP_Blog",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sadovik/CDP_Blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sadovik/CDP_Blog/issues"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-compass": "^2.0.3",
+    "gulp.spritesmith": "^2.5.1"
+  },
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-stylus": "^2.0.0",
+    "gulp.spritesmith": "^2.5.1"
+  }
+}
