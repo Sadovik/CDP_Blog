@@ -12,7 +12,7 @@
     @media #{$information-phone} { background: #f4f5f6; text-align: center; }
   }
   img {
-    @media #{$information-pc} { max-height: 230px; }
+    @media #{$information-pc} { max-height: 230px; width: 100%; }
     @media #{$information-tablet} { width: 100%; }
     @media #{$information-phone} { width: 100%; }
   }
@@ -49,7 +49,7 @@
       @media #{$information-tablet} { float: right; }
     }
   }
-  @media #{$information-pc} { position: absolute; right: 0; top: 281px; padding: 7px 0; }
+  @media #{$information-pc} { padding: 7px 0; }
   @media #{$information-tablet} { position: absolute; right: -64px; top: 0; }
   @media #{$information-phone} { text-align: center; padding-top: 14px; }
 }
@@ -131,6 +131,11 @@
     &:hover { cursor: pointer;
       &:before { border-left: 9px #b2d4ec solid; }
       a { background: #b2d4ec; }
+    }
+    &.active {
+      &:before { border-left: 9px #b2d4ec solid; }
+      a{ background: #b2d4ec;
+      }
     }
   }
 

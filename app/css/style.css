@@ -350,6 +350,12 @@ body, button, input, select, textarea {
   }
 }
 
+.btn {
+  background: #000;
+  color: #fff;
+  padding: 8px;
+}
+
 /*** Header ***/
 .page-header {
   background: #ffffff;
@@ -629,6 +635,7 @@ body, button, input, select, textarea {
 @media only screen and (min-width: 954px) {
   .blog-post img {
     max-height: 230px;
+    width: 100%;
   }
 }
 @media only screen and (min-width: 568px) and (max-width: 954px) {
@@ -723,9 +730,6 @@ body, button, input, select, textarea {
 }
 @media only screen and (min-width: 954px) {
   .share-nav {
-    position: absolute;
-    right: 0;
-    top: 281px;
     padding: 7px 0;
   }
 }
@@ -989,6 +993,12 @@ body, button, input, select, textarea {
   border-left: 9px #b2d4ec solid;
 }
 .tags-nav li:hover a {
+  background: #b2d4ec;
+}
+.tags-nav li.active:before {
+  border-left: 9px #b2d4ec solid;
+}
+.tags-nav li.active a {
   background: #b2d4ec;
 }
 @media only screen and (min-width: 568px) and (max-width: 954px) {
