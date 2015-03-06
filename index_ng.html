@@ -11,9 +11,9 @@
     <script src="app/js/vendors/modernizr.js"></script>
 </head>
 
-<body ng-controller="MainCtrl"> <!--ng-controller="GetPosts"-->
+<body>
     <header class="page-header">
-        <a href="#" ng-click="setDefaultCategory()"><img src="app/images/logo.png" alt=""/></a>
+        <a href="#" ui-sref="blog.categories.articles({category:category.name})"><img src="app/images/logo.png" alt=""/></a>
         <a href="#" class="scrolling-logo"><img src="app/images/logo_small.png" alt=""/></a>
         <nav class="page-nav clearfix">
             <a href="#" class="link-aside link-about" data-post="about-post">?</a>
@@ -34,83 +34,8 @@
         </nav>
     </header>
     <div class="page-wrap">
-        <aside>
-            <article class="hot-news about-post">
-                <h2>About</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </article>
-            <article class="hot-news some-post">
-                <h2>Some Shit</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </article>
-            <ul class="tags-nav">
-                <li ng-repeat="category in categories" ng-class="{'active':isCurrentCategory(category)}">
-                    <a href="#" ng-click="setCurrentCategory(category)">{{ category.name }}</a>
-                </li>
-            </ul>
-            <nav>
-                <a href="#" class="icon-close"></a>
-            </nav>
-        </aside>
-        <div>
-            <section class="blog-post" ng-class="{'active': isSelectedArticle(article.id)}" ng-repeat="article in articles | filter:{category:currentCategory.name}">
-                <button type="button" class="btn" ng-click="setEditedArticle(article);startEditing();" >EDIT</button>
-                <button type="button" class="btn" ng-click="deleteArticle(article)" >DELETE</button>
-                <figure>
-                    <img ng-src="{{ article.image }}" alt=""/>
-                    <figcaption>
-                        <h1><a href="#">{{ article.title }}</a></h1>
-                    </figcaption>
-                </figure>
-                <ul class="blog-post-description">
-                    <li><span class="date">{{ article.date }}</span></li>
-                    <li><span class="author">by <a href="#">{{ article.author }}</a></span></li>
-                </ul>
-                <p>{{ article.text }}</p>
-                <ul class="share-nav">
-                    <li><a href="#" class="i_fb"></a></li>
-                    <li><a href="#" class="i_gp"></a></li>
-                    <li><a href="#" class="i_tw"></a></li>
-                    <li><a href="#" class="i_vk"></a></li>
-                    <li><a href="#" class="i_od"></a></li>
-                </ul>
-            </section>
-
-            <!-- CREATING -->
-            <section ng-if="shouldShowCreating()">
-                <buttun class="btn" ng-click="startCreating()" type="button">Create New Article</buttun>
-
-                <form class="create-form" ng-show="isCreating" role="form" ng-submit="createArticle(newArticle)" novalidate>
-                    <div class="form-group">
-                        <label for="newArticleImage">Bookmark URL</label>
-                        <input type="text" class="form-control" id="newArticleImage" ng-model="newArticle.image" placeholder="Image URL">
-                    </div>
-                    <div class="form-group">
-                        <label for="newArticleTitle">Bookmark Title</label>
-                        <input type="text" class="form-control" id="newArticleTitle" ng-model="newArticle.title" placeholder="Enter title">
-                    </div>
-                    <button type="submit" class="btn btn-info btn-lg">Create</button>
-                    <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Cancel</button>
-                </form>
-            </section>
-            <!-- EDITING -->
-            <section ng-if="shouldShowEditing()">
-                <h4>Editing {{editedArticle.title}}</h4>
-
-                <form class="edit-form" role="form" ng-submit="updateArticle(editedArticle)" novalidate>
-                    <div class="form-group">
-                        <label>Bookmark Title</label>
-                        <input type="text" class="form-control" ng-model="editedArticle.title" placeholder="Enter title">
-                    </div>
-                    <div class="form-group">
-                        <label>Bookmark URL</label>
-                        <input type="text" class="form-control" ng-model="editedArticle.image" placeholder="Enter URL">
-                    </div>
-                    <button type="submit" class="btn btn-info btn-lg">Save</button>
-                    <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelEditing()">Cancel</button>
-                </form>
-            </section>
-
+        <aside ui-view="categories"></aside>
+        <div ui-view="articles">
             <div class="loader-wrap">
                 <div class="loader"></div>
             </div>
@@ -118,10 +43,18 @@
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>-->
-<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular-animate.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+
     <script src="app/js/appBlog.js"></script>
+
+    <script src="app/js/categories/categories.js"></script>
+    <script src="app/js/categories/articles/articles.js"></script>
+    <script src="app/js/categories/articles/create/article-create.js"></script>
+    <script src="app/js/categories/articles/edit/article-edit.js"></script>
+    <script src="app/js/common/articles-model.js"></script>
+    <script src="app/js/common/categories-model.js"></script>
 </body>
 </html>

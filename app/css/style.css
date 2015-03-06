@@ -1126,3 +1126,33 @@ body, button, input, select, textarea {
     opacity: 0;
   }
 }
+[ui-view].ng-enter, [ui-view].ng-leave {
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+}
+
+[ui-view].ng-leave {
+  opacity: 0;
+}
+
+[ui-view].ng-leave-active {
+  opacity: 1;
+}
