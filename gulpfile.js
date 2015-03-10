@@ -12,8 +12,7 @@ gulp.task('compass', function() {
             css: 'app/css',
             sass: 'app/scss',
             image: 'app/images',
-            //style: 'compressed'
-            style: 'expanded'
+            style: 'compressed'
         }))
         .on('error', function(error) {
             // Would like to catch the error here

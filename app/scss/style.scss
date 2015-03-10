@@ -9,7 +9,6 @@
     @include clearfix();
 }
 
-//$information-phone: "only screen and (min-width : 320px) and (max-width : 568px)";
 $information-phone: "only screen and (max-width : 568px)";
 $information-tablet: "only screen and (min-width : 568px) and (max-width : 954px)";
 $information-pc: "only screen and (min-width: 954px)";
@@ -53,4 +52,3 @@ body, button, input, select, textarea {
 
 @import "partials/header";
 @import "partials/page";
-@import "partials/animation";

@@ -17,8 +17,8 @@
     "gulp.spritesmith": "^2.5.1"
   },
   "dependencies": {
-    "gulp": "^3.8.11",
-    "gulp-stylus": "^2.0.0",
+    "gulp": "^3.8.10",
+    "gulp-compass": "^2.0.3",
     "gulp.spritesmith": "^2.5.1"
   }
 }
