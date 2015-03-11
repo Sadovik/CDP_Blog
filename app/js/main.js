@@ -70,7 +70,6 @@ $(document).ready(function() {
 
 	$(window).resize(function() {
 		if (mainNavLink.hasClass(classes.currentOnMobile) || asideLink.hasClass(classes.currentOnMobile)) {
-			console.log(1);
 			mainNavLink.removeClass(classes.currentOnMobile);
 			$('.page-nav ul').removeClass(classes.expandOnMobile);
 			asideLink.removeClass(classes.currentOnMobile);
