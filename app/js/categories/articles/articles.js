@@ -17,6 +17,7 @@ angular.module('categories.articles',[
             })
     })
     .controller('ArticlesListCtrl', function ($stateParams, CategoriesModel, ArticlesModel ){
+
         var articlesListCtrl = this;
 
         CategoriesModel.setCurrentCategory($stateParams.category);
@@ -24,7 +25,6 @@ angular.module('categories.articles',[
         ArticlesModel.getArticles()
             .then(function(articles){
                 articlesListCtrl.articles = articles;
-                console.log(articles);
             });
 
         articlesListCtrl.getCurrentCategory = CategoriesModel.getCurrentCategory;

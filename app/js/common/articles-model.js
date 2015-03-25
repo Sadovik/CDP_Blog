@@ -38,17 +38,7 @@ angular.module('blog.models.articles',[
         }
 
         model.getArticles = function() {
-            var deferred = $q.defer();
-
-            if (articles) {
-                deferred.resolve(articles);
-            } else {
-                return $http.get(URLS.FETCH).then(function(articles){
-                    deferred.resolve(cacheArticles(articles));
-                });
-            }
-
-            return deferred.promise;
+            return (articles) ? $q.when(articles) : $http.get(URLS.FETCH).then(cacheArticles);
         }
 
         model.createArticle = function(article) {

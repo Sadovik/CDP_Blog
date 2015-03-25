@@ -86,7 +86,7 @@
     }
   }
   &.about-post, &.some-post  {
-    h2 {
+      h2 {
       @media #{$information-pc} { &:before { color: #ffffff; text-align: center; width: 30px; height: 24px; float: left; margin-right: 10px; background: #6794b7; } }
     }
   }
