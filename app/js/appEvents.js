@@ -22,11 +22,13 @@ $(document).ready(function() {
     });
 
     var asideLink = $('.link-aside');
-    var asidePosts = $('.hot-news');
+    var asidePosts;
     var asideClose = $('.icon-close');
     var mainNavLink = $('.link-m-nav');
 
     asideLink.on('click', function(){
+        asidePosts = $('.hot-news');
+        asideClose = $('.icon-close');
         var linkPost = $(this).attr('data-post');
         asideClose.attr('class','icon-close');
         $('.tags-nav').removeClass(classes.openOnMobile);
